@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h3 style="margin-left: 300px;">User List</h3>
+<br>
+<div class="col-6" style="width: 500px; margin-left: 200px;">
+    {% for item in object_list %}
+        {% if not item.is_staff %}
+            <ol>
+                <h4><a href="{% url 'status:admin_detail' pk=item.pk %}">{{item.first_name}}</a></h4>
+            </ol>         
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}

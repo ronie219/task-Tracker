@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h3 style="margin-left: 500px;">Task Entry</h3>
+<br>
+<div class="col-6" style="width: 500px; margin-left: 50px;">
+    <div class="container">
+        <p><h4><strong>Name:</strong>              {{ object.user.first_name }}</h4></p>
+        <p><h4><strong>Detail:</strong>              {{ object.detail }}</h4></p>
+        <p><h4><strong>Percent:</strong>         {{ object.percentange }}%</h4></p>
+        <p><h4><strong>Comment:</strong>           {{ object.comment }}</h4></p>
+        <p>  <h1></h1>        </p>
+        <p><h6><strong>Create at: </strong>{{object.created_at}}</h6></p>
+        <p><h6><strong>Update at:</strong> {{object.updated_at}}</h6></p>
+        {% if request.user == object.user  %}
+        <a href="{% url 'status:update' pk=object.pk %}"><button class="btn btn-primary">Update</button></a>
+        <a href="{% url 'status:delete' pk=object.pk %}"><button class="btn btn-primary">Delete</button></a>
+        {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}

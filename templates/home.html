@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <h1> Welcome {{ request.user.first_name }}.</h1>
+    <br>
+    <div class="container">
+        <h3>Todays all tasks status</h3>
+        <br>
+    </div>
+    <div class = 'container'>
+        {% if today_detail.count != 0 %}
+            {% for i in today_detail %}
+            <ul>
+                <h4><strong>{{i.user.first_name}}</strong></h4>
+                <p><strong>Task Name: </strong>{{i.detail}}</p>
+                <p><strong>Starting date: </strong>{{i.starting_date}}</p>
+                <p><strong>Percentage: </strong> {{i.percentange}}% </p>
+                <p><strong>Comment: </strong> {{i.comment}} </p>
+            </ul>
+            <br>
+            {% endfor %}
+        {% else %}
+            <br><h6><p>Nothing To Display</p></h6>
+        {% endif %}
+    </div>
+    {% else %}
+    <h1> Welcome to the Home page.</h1>
+    {% endif %}
+    
+{% endblock %}

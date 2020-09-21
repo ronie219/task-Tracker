@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+    <div class="container">
+        <h3 style="margin-left: 50px;">Enter new password</h3>
+        <div class="col-6" style="width: 500px; margin-left: 50px;">
+        <form method="POST" class="row">
+            <p>Please enter your new password twice so we can verify you typed it in correctly.</p>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button class = 'btn btn-primary' type="submit">Change my Passowd</button>
+        </form>
+        </div>
+        </div>
+{% endblock %}

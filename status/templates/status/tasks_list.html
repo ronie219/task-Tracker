@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h3 style="margin-left: 500px;">Task List.</h3>
+<br>
+{% if request.user.is_staff == False %}
+<form style="margin-left: 250px;" action="{% url 'status:search' %}" method="GET" >
+    <h4><strong>From Date :</strong>
+        <input type="date" name="q" id="" value="{{request.GET.q}}" required>
+        <strong>To Date   :</strong>
+        <input type="date" name="q" id="" value="{{request.GET.q}}" required>
+        <button class = 'btn btn-success' type="submit">Search</button></h4>
+</form>
+{% endif %}
+<br>
+<div class="col-2" style="width: 500px; margin-left: 50px;">
+    {% if object_list.count != 0 %}
+    
+        {% for item in object_list %}
+        <div class="container">
+            <h5><p><strong>Task Detail:    </strong>{{item.detail}}</p></h5>
+            <h5><p><strong>Starting Date:  </strong>{{item.starting_date}}</p></h5>
+            <h5><p><strong>Percent:        </strong>{{item.percentange}}%</p></h5>
+            <h5><strong>Update at:         </strong> {{item.updated_at}}</h5>
+            <a href="{% url 'status:detail' pk=item.pk %}">detail...</a>
+            <hr style="width:100%;text-align:left;margin-left:0">
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>Nothing to Display</p>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

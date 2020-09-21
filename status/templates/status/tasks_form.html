@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+<h3 style="margin-left: 300px;">Name :{{request.user.first_name}}</h3>
+<div class="col-6" style="width: 500px; margin-left: 200px;">
+<form method="POST" class="row">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class = 'btn btn-primary' type="submit">Create/Update</button>
+</form>
+</div>
+</div>
+{% endblock %}

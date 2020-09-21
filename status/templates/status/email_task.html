@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h3 style="margin-left: 500px;">Email Task.</h3>
+<br>
+{% if request.user.is_staff == False %}
+<form action="{% url 'status:email' %}" method="GET">
+    <h4><strong>From Date :</strong>
+        <input type="date" name="q" id="" value="{{request.GET.q}}" required>
+        <strong>To Date   :</strong>
+        <input type="date" name="q" id="" value="{{request.GET.q}}" required>
+        <button type="submit">Email</button></h4>
+</form>
+{% endif %}
+<br>
+{{message}}
+{% endblock %}
